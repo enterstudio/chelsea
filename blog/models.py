@@ -9,7 +9,6 @@ class Blog(models.Model):
     body = RichTextField(config_name='awesome_ckeditor')
     posted = models.DateField(db_index=True, auto_now_add=True)
     category = models.ForeignKey('blog.Category')
-    phototest = models.ImageField(upload_to='pics')
     
     def __unicode__(self):
         return '%s' % self.title
