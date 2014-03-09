@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% block title %}Welcome to my blog{% endblock %}
+{% block title %}Chelsea blog{% endblock %}
 
-{% block content %}
+{% block categories %}
     <h2>Categories</h2>
     {% if categories %}
         <ul>
@@ -24,4 +24,53 @@
         <p>There are no posts.</p>
     {% endif %}
 
+{% endblock %}
+
+{% block content %}
+
+    	{% if posts %}
+	        <ul>
+	        {% for post in posts %}
+        	<!--Blog Post-->
+            <div class="row blog blog-medium margin-bottom-40">
+                <div class="col-md-5">
+                    <a href="{{ post.get_absolute_url }}"><img class="img-responsive" src="http://images.zap2it.com/assets/p183983_b_h3_aa/law-and-order.jpg" alt=""></a>
+                </div>    
+                <div class="col-md-7">
+                	<h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                	{% autoescape off %}
+					{{ post.body|truncatewords_html:40 }}
+					{% endautoescape %}
+                </div>    
+            </div>
+            <!--End Blog Post--> 
+        	<hr class="margin-bottom-40">    
+	        {% endfor %}
+	        
+	        </ul>
+	    {% else %}
+	        <p>There are no posts.</p>
+	    {% endif %}
+                   
+
+        
+    	{% comment %}
+        <!--Pagination-->
+         <div class="text-center">
+            <ul class="pagination">
+                <li><a href="blog_medium.html#">«</a></li>
+                <li><a href="blog_medium.html#">1</a></li>
+                <li><a href="blog_medium.html#">2</a></li>
+                <li class="active"><a href="blog_medium.html#">3</a></li>
+                <li><a href="blog_medium.html#">4</a></li>
+                <li><a href="blog_medium.html#">5</a></li>
+                <li><a href="blog_medium.html#">6</a></li>
+                <li><a href="blog_medium.html#">7</a></li>
+                <li><a href="blog_medium.html#">8</a></li>
+                <li><a href="blog_medium.html#">»</a></li>
+            </ul>                                                            
+        </div>
+        <!--End Pagination-->
+        {% endcomment %}
+   
 {% endblock %}

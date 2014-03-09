@@ -5,6 +5,26 @@
 {% block title %}{{ post.title }}{% endblock %}
 
 {% block content %}
+	<h2>{{ post.title }}</h2>
+	<div class="blog-post-tags">
+        <ul class="list-unstyled list-inline blog-info">
+            <li><i class="icon-calendar"></i> February 02, 2013</li>
+            <li><i class="icon-pencil"></i> Diana Anderson</li>
+            <li><i class="icon-comments"></i> <a href="blog_item_option1.html#">24 Comments</a></li>
+        </ul>
+        <ul class="list-unstyled list-inline blog-tags">
+            <li>
+                <i class="icon-tags"></i> 
+                <a href="blog_item_option1.html#">Technology</a> 
+                <a href="blog_item_option1.html#">Education</a>
+                <a href="blog_item_option1.html#">Internet</a>
+                <a href="blog_item_option1.html#">Media</a>
+            </li>
+        </ul>                                                
+    </div>
+    <div class="blog-img">
+        <img class="img-responsive" src="/static/blog/img/posts/2.jpg" alt="">
+    </div>
     {% autoescape off %}
     {{ post.body }}
     {% endautoescape %}
