@@ -1,5 +1,8 @@
 from django.conf.urls import patterns, include, url
 
+# feeds
+from blog.feeds import LatestEntriesFeed
+
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 
@@ -8,13 +11,14 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'blog.views.index', name='index'),
-    url(r'^blog/view/(?P<slug>[^\.]+)', 
+    url(r'^entry/(?P<slug>[^\.]+)', 
     	'blog.views.view_post', 
     	name='view_blog_post'),
-	url(r'^blog/category/(?P<slug>[^\.]+)', 
+	url(r'^category/(?P<slug>[^\.]+)', 
 		'blog.views.view_category', 
 		name='view_blog_category'
 	),
+	url(r'^feeds/latest/$', LatestEntriesFeed()),
     # url(r'^$', 'chelsea.views.home', name='home'),
     # url(r'^chelsea/', include('chelsea.foo.urls')),
 
