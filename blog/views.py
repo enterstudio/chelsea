@@ -6,7 +6,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 def index(request):
     template_data = {
         'categories': Category.objects.all(),
-        'posts': Blog.objects.filter(status='published')[:5],
+        'posts': Blog.objects.filter(status='published').order_by('-posted')[:5],
         'baseContainerClasses' : ['blog_page']
     }
     return render_to_response('index.html',template_data)
