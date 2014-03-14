@@ -1,19 +1,13 @@
 from django.contrib import admin
-from blog.models import Blog, Category,Photo
-
-
-class BlogPhotoInline(admin.TabularInline):
-    model = Photo
-    extra = 3
+from blog.models import Blog, Category
 
 class BlogAdmin(admin.ModelAdmin):
-    exclude = ['posted']
-    prepopulated_fields = {'slug': ('title',)}
-    inlines = [ BlogPhotoInline, ]
+    fields = ('title','slug','body','category','status')
+    # exclude = ('posted',)
 
 class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
 
 
-admin.site.register(Blog)
-admin.site.register(Category)
+admin.site.register(Blog,BlogAdmin)
+admin.site.register(Category,CategoryAdmin)
