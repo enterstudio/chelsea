@@ -29,12 +29,12 @@
 {% block content %}
 
     	{% if posts %}
-	        <ul>
+	        
 	        {% for post in posts %}
         	<!--Blog Post-->
             <div class="row blog blog-medium margin-bottom-40">
                 <div class="col-md-5">
-                    <a href="{{ post.get_absolute_url }}"><img class="img-responsive" src="{{post.main_photo}}" alt=""></a>
+                    <a href="{{ post.get_absolute_url }}"><img class="img-responsive" src="https://chchchelsea.s3.amazonaws.com/{{post.main_photo}}" alt=""></a>
                 </div>    
                 <div class="col-md-7">
                 	<h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
@@ -47,7 +47,7 @@
         	<hr class="margin-bottom-40">    
 	        {% endfor %}
 	        
-	        </ul>
+	        
 	    {% else %}
 	        <p>There are no posts.</p>
 	    {% endif %}
