@@ -34,7 +34,9 @@
         	<!--Blog Post-->
             <div class="row blog blog-medium margin-bottom-40">
                 <div class="col-md-5">
+                    {% if post.main_photo %}
                     <a href="{{ post.get_absolute_url }}"><img class="img-responsive" src="https://chchchelsea.s3.amazonaws.com/{{post.main_photo}}" alt=""></a>
+                    {% endif %}
                 </div>    
                 <div class="col-md-7">
                 	<h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
