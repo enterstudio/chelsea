@@ -66,8 +66,18 @@ CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
 CKEDITOR_CONFIGS = {
    'awesome_ckeditor': {
-       'toolbar': 'Full',
-   },
+       'skin': 'moono',
+        'toolbar': [
+            ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+            ['Link', 'Image', 'Table', 'HorizontalRule'],
+            ['TextColor', 'BGColor'],
+            ['Smiley', 'SpecialChar'], ['Source'],
+        ],
+        'height': 291,
+        'width': 835,
+        'filebrowserWindowWidth': 940,
+        'filebrowserWindowHeight': 725,
+    },
 }
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
