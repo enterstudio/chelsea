@@ -4,7 +4,24 @@ from ckeditor.fields import RichTextField
 from django.utils.text import slugify
 from model_utils import Choices
 
+from django.contrib.auth.models import User
+
 # Create your models here.
+class Category(models.Model):
+    title = models.CharField(max_length=100, db_index=True)
+    slug = models.SlugField(max_length=100, db_index=True)
+    description = models.TextField()
+    
+    class Meta:
+        verbose_name_plural = "Categories"
+
+    def __unicode__(self):
+        return '%s' % self.title
+
+    @permalink
+    def get_absolute_url(self):
+        return ('view_blog_category', None, { 'slug': self.slug })
+
 class Blog(models.Model):
 
     title = models.CharField(max_length=100, unique=True)
@@ -15,14 +32,18 @@ class Blog(models.Model):
     
     STATUSES = Choices('draft', 'published')
     status = models.CharField(choices=STATUSES, default=STATUSES.draft, max_length=20)
-    category = models.ForeignKey('blog.Category', blank=True, null=True, on_delete=models.SET_NULL)
+    # category = models.ForeignKey('blog.Category', blank=True, null=True, on_delete=models.SET_NULL)
     
+    categories = models.ManyToManyField(Category, blank=True, null=True, through='CategoryToPost')
+
     main_photo_description = 'Main Image - will be displayed for blog post. Keep to 800px wide'
     main_photo = models.ImageField(main_photo_description,upload_to='pics', null=True, blank=True)
     
     main_photo_alt_text_short_description = 'Image alt text - type image alternate text - image description here.'
     main_photo_alt_text = models.CharField(main_photo_alt_text_short_description, max_length=200, null=True, blank=True)
     
+    author = models.ForeignKey(User)
+
     def __unicode__(self):
         return '%s' % self.title
 
@@ -44,17 +65,9 @@ class Blog(models.Model):
             return ''
     admin_main_photo.allow_tags = True
 
-
-class Category(models.Model):
-    title = models.CharField(max_length=100, db_index=True)
-    slug = models.SlugField(max_length=100, db_index=True)
-
-    def __unicode__(self):
-        return '%s' % self.title
-
-    @permalink
-    def get_absolute_url(self):
-        return ('view_blog_category', None, { 'slug': self.slug })
+class CategoryToPost(models.Model):
+    post = models.ForeignKey(Blog)
+    category = models.ForeignKey(Category)
 
 
 class Photo(models.Model):

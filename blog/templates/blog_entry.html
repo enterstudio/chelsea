@@ -8,13 +8,14 @@
 	<h2>{{ post.title }}</h2>
 	<div class="blog-post-tags">
         <ul class="list-unstyled list-inline blog-info">
-            <li><i class="icon-calendar"></i> February 02, 2013</li>
-            <li><i class="icon-pencil"></i> Diana Anderson</li>
-            <li><i class="icon-comments"></i> <a href="blog_item_option1.html#">24 Comments</a></li>
+            <li><i class="icon-calendar"></i>{{post.posted}}</li>
+            {# <li><i class="icon-pencil"></i> Diana Anderson</li>
+            <li><i class="icon-comments"></i> <a href="blog_item_option1.html#">24 Comments</a></li> #}
         </ul>
         <ul class="list-unstyled list-inline blog-tags">
             <li>
-                <i class="icon-tags"></i> 
+                <i class="icon-tags"></i>
+                {{post.category}}
                 <a href="blog_item_option1.html#">Technology</a> 
                 <a href="blog_item_option1.html#">Education</a>
                 <a href="blog_item_option1.html#">Internet</a>
