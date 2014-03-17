@@ -11,7 +11,7 @@ def index(request):
     }
     return render_to_response('index.html',template_data)
 
-def view_post(request, slug):   
+def view_post(request, slug, year, month,):   
     template_data = {
         'post': get_object_or_404(Blog, slug=slug),
         'baseContainerClasses' : ['blog_page','blog_item']

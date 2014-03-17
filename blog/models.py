@@ -49,7 +49,12 @@ class Blog(models.Model):
 
     @permalink
     def get_absolute_url(self):
-        return ('view_blog_post', None, { 'slug': self.slug })
+        # return "/%s/%s/%s/" % (self.posted.year, self.posted.month, self.slug)
+        return ('view_blog_post', None, { 
+                                        'year':self.posted.year,
+                                        'month':self.posted.strftime("%m"),
+                                        'slug': self.slug 
+                                        })
 
     def save(self, *args, **kwargs):
         if not self.id:

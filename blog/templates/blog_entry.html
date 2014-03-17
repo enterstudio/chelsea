@@ -15,11 +15,10 @@
         <ul class="list-unstyled list-inline blog-tags">
             <li>
                 <i class="icon-tags"></i>
-                {{post.category}}
-                <a href="blog_item_option1.html#">Technology</a> 
-                <a href="blog_item_option1.html#">Education</a>
-                <a href="blog_item_option1.html#">Internet</a>
-                <a href="blog_item_option1.html#">Media</a>
+                {% for category in post.categories.all %} 
+                <a href="/category/{{category.slug}}">{{ category.title }}</a>
+                {% endfor %}
+                
             </li>
         </ul>                                                
     </div>
