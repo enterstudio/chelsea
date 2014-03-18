@@ -7,13 +7,28 @@ def index(request):
     template_data = {
         'categories': Category.objects.all(),
         'posts': Blog.objects.filter(status='published').order_by('-posted')[:5],
+
         'baseContainerClasses' : ['blog_page']
     }
     return render_to_response('index.html',template_data)
 
 def view_post(request, slug, year, month,):   
+    
+    post = get_object_or_404(Blog, slug=slug)
+    try:
+        nextPost = post.get_next_by_posted()
+    except:
+        nextPost = None
+
+    try:
+        previousPost = post.get_previous_by_posted()
+    except:
+        previousPost = None
+
     template_data = {
-        'post': get_object_or_404(Blog, slug=slug),
+        'post': post,
+        'nextPost' : nextPost,
+        'previousPost' : previousPost,
         'baseContainerClasses' : ['blog_page','blog_item']
     }
     return render_to_response('blog_entry.html', template_data)

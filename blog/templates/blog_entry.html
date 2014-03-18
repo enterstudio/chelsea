@@ -34,6 +34,7 @@
         </ul>
         {% endif %}                                      
     </div>
+
     <div class="blog-img">
         {% if post.main_photo %}
         <img class="img-responsive" src="https://chchchelsea.s3.amazonaws.com/{{post.main_photo}}" alt="{{post.main_photo_alt_text}}">
@@ -42,4 +43,17 @@
     {% autoescape off %}
     {{ post.body }}
     {% endautoescape %}
+
+    <ul class="pager">
+        {% if previousPost %}
+        <li class="previous"><a href="{{previousPost.get_absolute_url}}">
+            &larr; {{previousPost.title}}
+        </a></li>
+        {% endif %}
+
+        {% if nextPost %}
+        <li class="next"><a href="{{nextPost.get_absolute_url}}">{{nextPost.title}} &rarr;</a></li>
+        {% endif %}
+    </ul>
+
 {% endblock %}
