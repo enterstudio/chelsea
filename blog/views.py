@@ -2,14 +2,28 @@
 
 from blog.models import Blog, Category
 from django.shortcuts import render_to_response, get_object_or_404
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 def index(request):
+    blog_posts = Blog.objects.filter(status='published').order_by('-posted')
+    paginator = Paginator(blog_posts, 10) # Show 10 posts per page
+
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        posts = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        posts = paginator.page(paginator.num_pages)
+
     template_data = {
         'categories': Category.objects.all(),
-        'posts': Blog.objects.filter(status='published').order_by('-posted')[:5],
-
+        'posts': posts,
         'baseContainerClasses' : ['blog_page']
     }
+
     return render_to_response('index.html',template_data)
 
 def view_post(request, slug, year, month,):   
