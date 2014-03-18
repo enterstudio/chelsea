@@ -28,7 +28,8 @@ class Blog(models.Model):
     slug = models.SlugField(max_length=100, unique=True)
     body = RichTextField(config_name='awesome_ckeditor')
     address = models.CharField(max_length=200,null=True, blank=True)
-    posted = models.DateField(db_index=True, auto_now_add=True)
+    posted = models.DateTimeField(db_index=True, auto_now_add=True)
+    last_modified = models.DateTimeField(db_index=True)
     
     STATUSES = Choices('draft', 'published')
     status = models.CharField(choices=STATUSES, default=STATUSES.draft, max_length=20)
@@ -60,6 +61,7 @@ class Blog(models.Model):
         if not self.id:
             # Newly created object, so set slug
             self.slug = slugify(self.title)
+            
 
         super(Blog, self).save(*args, **kwargs)
 

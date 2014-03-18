@@ -2,6 +2,8 @@ from django.contrib import admin
 from blog.models import Blog, Category, CategoryToPost
 from django.contrib.auth.models import User
 
+from datetime import datetime
+
 class CategoryAdmin(admin.ModelAdmin):
 	prepopulated_fields = {"slug": ("title",)}
 
@@ -12,7 +14,7 @@ class CategoryToPostInline(admin.TabularInline):
 class BlogAdmin(admin.ModelAdmin):
 
 	list_display = ['title', 'admin_main_photo','posted','status']
-	fields = ('title','slug','body','address','main_photo','main_photo_alt_text','status')
+	fields = ('title','slug','last_modified','body','address','main_photo','main_photo_alt_text','status')
 	prepopulated_fields = {"slug": ("title",)}
 	exclude = ('author',)
 	inlines = [CategoryToPostInline]
@@ -20,6 +22,7 @@ class BlogAdmin(admin.ModelAdmin):
 
 	def save_model(self, request, obj, form, change):
 		obj.author = request.user
+		obj.last_modified = datetime.now()
 		obj.save()
 	
 

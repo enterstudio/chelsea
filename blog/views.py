@@ -4,9 +4,18 @@ from blog.models import Blog, Category
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
+# import the logging library
+import logging
+
+# Get an instance of a logger
+logger = logging.getLogger('blog.logger')
+
 def index(request):
     blog_posts = Blog.objects.filter(status='published').order_by('-posted')
     paginator = Paginator(blog_posts, 10) # Show 10 posts per page
+
+    # for p in blog_posts:
+    #     logger.info(p.posted)
 
     page = request.GET.get('page')
     try:
