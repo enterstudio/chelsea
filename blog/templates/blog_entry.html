@@ -15,7 +15,7 @@
 	<h2>{{ post.title }}</h2>
 	<div class="blog-post-tags">
         <ul class="list-unstyled list-inline blog-info">
-            <li><i class="icon-calendar"></i>{{post.posted}}</li>
+            <li><i class="icon-calendar"></i>{{post.display_date|date:"M d, Y"}}</li>
             {% comment %}
             <li><i class="icon-pencil"></i> Diana Anderson</li>
             <li><i class="icon-comments"></i> <a href="blog_item_option1.html#">24 Comments</a></li>

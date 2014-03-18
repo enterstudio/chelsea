@@ -29,7 +29,7 @@ class Blog(models.Model):
     body = RichTextField(config_name='awesome_ckeditor')
     address = models.CharField(max_length=200,null=True, blank=True)
     posted = models.DateTimeField(db_index=True, auto_now_add=True)
-    last_modified = models.DateTimeField(db_index=True)
+    display_date = models.DateTimeField(db_index=True)
     
     STATUSES = Choices('draft', 'published')
     status = models.CharField(choices=STATUSES, default=STATUSES.draft, max_length=20)
@@ -50,10 +50,9 @@ class Blog(models.Model):
 
     @permalink
     def get_absolute_url(self):
-        # return "/%s/%s/%s/" % (self.posted.year, self.posted.month, self.slug)
         return ('view_blog_post', None, { 
-                                        'year':self.posted.year,
-                                        'month':self.posted.strftime("%m"),
+                                        'year':self.display_date.year,
+                                        'month':self.display_date.strftime("%m"),
                                         'slug': self.slug 
                                         })
 

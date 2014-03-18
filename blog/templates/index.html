@@ -40,7 +40,7 @@
                 </div>    
                 <div class="col-md-7">
                 	<h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-                    <p>{{post.posted|date:"M. d, Y g"}}</p>
+                    <p>{{post.display_date|date:"M d, Y"}}</p>
                     
                 	{% autoescape off %}
 					{{ post.body|striptags|truncatewords:40 }}

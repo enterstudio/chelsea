@@ -11,7 +11,7 @@ import logging
 logger = logging.getLogger('blog.logger')
 
 def index(request):
-    blog_posts = Blog.objects.filter(status='published').order_by('-posted')
+    blog_posts = Blog.objects.filter(status='published').order_by('-display_date')
     paginator = Paginator(blog_posts, 10) # Show 10 posts per page
 
     # for p in blog_posts:
