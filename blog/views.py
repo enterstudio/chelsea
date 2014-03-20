@@ -39,12 +39,12 @@ def view_post(request, slug, year, month,):
     
     post = get_object_or_404(Blog, slug=slug)
     try:
-        nextPost = post.get_next_by_posted()
+        nextPost = post.get_next_by_display_date()
     except:
         nextPost = None
 
     try:
-        previousPost = post.get_previous_by_posted()
+        previousPost = post.get_previous_by_display_date()
     except:
         previousPost = None
 
