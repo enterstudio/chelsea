@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+    {% block entry_meta %}{% endblock %}
+
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/feeds/latest" />
 
     <!-- CSS Global Compulsory-->
@@ -234,11 +236,10 @@
 <div class="breadcrumbs margin-bottom-40">
     
     <div class="container">
-        <h1 class="pull-left">Blog Medium</h1>
+        
         <ul class="pull-right breadcrumb">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="blog_medium.html">Features</a></li>
-            <li class="active">Blog Medium</li>
+            <li><a href="http://www.hichelsea.com">Home</a></li>
+            <li class="active">Blog</li>
         </ul>
     </div>
    
@@ -259,10 +260,10 @@
             <div class="magazine-sb-social margin-bottom-30">
                 <div class="headline headline-md"><h2>Social Icons</h2></div>
                 <ul class="social-icons social-icons-color">
-                    <li><a class="social_rss" data-original-title="Feed" href="blog_medium.html#"></a></li>
+                    <li><a class="social_rss" data-original-title="Feed" href="/feeds/latest/"></a></li>
                     <li><a class="social_facebook" data-original-title="Facebook" href="blog_medium.html#"></a></li>
                     <li><a class="social_twitter" data-original-title="Twitter" href="blog_medium.html#"></a></li>
-                    <li><a class="social_vimeo" data-original-title="Vimeo" href="blog_medium.html#"></a></li>
+                    {% comment %}<li><a class="social_vimeo" data-original-title="Vimeo" href="blog_medium.html#"></a></li>
                     <li><a class="social_googleplus" data-original-title="Goole Plus" href="blog_medium.html#"></a></li>
                     <li><a class="social_pintrest" data-original-title="Pinterest" href="blog_medium.html#"></a></li>
                     <li><a class="social_linkedin" data-original-title="Linkedin" href="blog_medium.html#"></a></li>
@@ -272,35 +273,14 @@
                     <li><a class="social_jolicloud" data-original-title="Jolicloud" href="blog_medium.html#"></a></li>
                     <li><a class="social_wordpress" data-original-title="Wordpress" href="blog_medium.html#"></a></li>
                     <li><a class="social_github" data-original-title="Github" href="blog_medium.html#"></a></li>
-                    <li><a class="social_xing" data-original-title="Xing" href="blog_medium.html#"></a></li>
+                    <li><a class="social_xing" data-original-title="Xing" href="blog_medium.html#"></a></li>{% endcomment %}
                 </ul>
                 <div class="clearfix"></div>                
             </div>
             <!-- End Social Icons -->
 
-            <!-- Posts -->
-            <div class="posts margin-bottom-40">
-                <div class="headline headline-md"><h2>Recent Posts</h2></div>
-                <dl class="dl-horizontal">
-                    <dt><a href="blog_medium.html#"><img src="/static/blog/img/sliders/elastislide/6.jpg" alt="" /></a></dt>
-                    <dd>
-                        <p><a href="blog_medium.html#">Responsive Bootstrap 3 Template placerat idelo alac eratamet.</a></p> 
-                    </dd>
-                </dl>
-                <dl class="dl-horizontal">
-                    <dt><a href="blog_medium.html#"><img src="/static/blog/img/sliders/elastislide/10.jpg" alt="" /></a></dt>
-                    <dd>
-                        <p><a href="blog_medium.html#">100+ Amazing Features Layer Slider, Layer Slider, Icons, 60+ Pages etc.</a></p> 
-                    </dd>
-                </dl>
-                <dl class="dl-horizontal">
-                    <dt><a href="blog_medium.html#"><img src="/static/blog/img/sliders/elastislide/11.jpg" alt="" /></a></dt>
-                    <dd>
-                        <p><a href="blog_medium.html#">Developer Friendly Code imperdiet condime ntumi mperdiet condim.</a></p> 
-                    </dd>
-                </dl>
-            </div><!--/posts-->
-            <!-- End Posts -->
+            {% block recent_posts %}{% endblock %}
+            
 
         	<!-- Tabs Widget -->
         	<div class="headline headline-md"><h2>Tabs Widget</h2></div>
@@ -406,7 +386,7 @@
                     </div><!-- /input-group -->                    
                 </form>                         
             </div><!--/col-md-4-->  
-            
+            {% comment %}
             <div class="col-md-4 md-margin-bottom-40">
                 <div class="posts">
                     <div class="headline"><h2>Recent Blog Entries</h2></div>
@@ -430,28 +410,23 @@
                     </dl>
                 </div>
             </div><!--/col-md-4-->
+            {% endcomment %}
 
             <div class="col-md-4">
                 <!-- Monthly Newsletter -->
                 <div class="headline"><h2>Contact Us</h2></div> 
                 <address class="md-margin-bottom-40">
-                    25, Lorem Lis Street, Orange <br />
-                    California, US <br />
-                    Phone: 800 123 3456 <br />
-                    Fax: 800 123 3456 <br />
-                    Email: <a href="mailto:info@anybiz.com" class="">info@anybiz.com</a>
+                    
+                    Email: <a href="mailto:info@hichelsea.com" class="">info@hichelsea.com</a>
                 </address>
 
                 <!-- Stay Connected -->
                 <div class="headline"><h2>Stay Connected</h2></div> 
                 <ul class="social-icons">
-                    <li><a href="blog_medium.html#" data-original-title="Feed" class="social_rss"></a></li>
+                    <li><a href="/feed/latest" data-original-title="Feed" class="social_rss"></a></li>
                     <li><a href="blog_medium.html#" data-original-title="Facebook" class="social_facebook"></a></li>
                     <li><a href="blog_medium.html#" data-original-title="Twitter" class="social_twitter"></a></li>
-                    <li><a href="blog_medium.html#" data-original-title="Goole Plus" class="social_googleplus"></a></li>
-                    <li><a href="blog_medium.html#" data-original-title="Pinterest" class="social_pintrest"></a></li>
-                    <li><a href="blog_medium.html#" data-original-title="Linkedin" class="social_linkedin"></a></li>
-                    <li><a href="blog_medium.html#" data-original-title="Vimeo" class="social_vimeo"></a></li>
+                    
                 </ul>
             </div><!--/col-md-4-->
         </div><!--/row-->   

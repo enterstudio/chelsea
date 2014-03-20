@@ -38,6 +38,7 @@ def index(request):
 def view_post(request, slug, year, month,):   
     
     post = get_object_or_404(Blog, slug=slug)
+
     try:
         nextPost = post.get_next_by_display_date()
     except:
@@ -52,6 +53,7 @@ def view_post(request, slug, year, month,):
         'post': post,
         'nextPost' : nextPost,
         'previousPost' : previousPost,
+        'recentPosts' : Blog.objects.filter(status='published').order_by('-display_date')[:3],
         'baseContainerClasses' : ['blog_page','blog_item']
     }
     return render_to_response('blog_entry.html', template_data)
