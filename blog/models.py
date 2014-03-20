@@ -43,6 +43,8 @@ class Blog(models.Model):
     main_photo_alt_text_short_description = 'Image alt text - type image alternate text - image description here.'
     main_photo_alt_text = models.CharField(main_photo_alt_text_short_description, max_length=200, null=True, blank=True)
     
+    # main_photo_credit = models.CharField(max_length=100, null=True, blank=True)
+    
     author = models.ForeignKey(User)
 
     def __unicode__(self):

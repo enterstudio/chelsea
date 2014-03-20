@@ -49,10 +49,13 @@
         <img class="img-responsive" src="https://chchchelsea.s3.amazonaws.com/{{post.main_photo}}" alt="{{post.main_photo_alt_text}}">
         {% endif %}
     </div>
+    
+    <br><br>
+
     {% autoescape off %}
     {{ post.body }}
     {% endautoescape %}
-
+    
     <ul class="pager">
         {% if previousPost %}
         <li class="previous"><a href="{{previousPost.get_absolute_url}}">
