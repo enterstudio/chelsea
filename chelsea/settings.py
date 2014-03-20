@@ -68,7 +68,7 @@ CKEDITOR_CONFIGS = {
    'awesome_ckeditor': {
        'skin': 'moono',
         'toolbar': [
-            ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'SpellChecker', 'Undo', 'Redo'],
+            ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat', 'SpellChecker', 'Undo', 'Redo'],
             ['Link', 'Image', 'Table', 'HorizontalRule'],
             ['TextColor', 'BGColor'],
             ['Smiley', 'SpecialChar'], ['Source'],
