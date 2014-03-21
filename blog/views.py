@@ -30,6 +30,7 @@ def index(request):
     template_data = {
         'categories': Category.objects.all(),
         'posts': posts,
+        'recentPosts' : Blog.objects.filter(status='published').order_by('-display_date')[:3],
         'baseContainerClasses' : ['blog_page']
     }
 
