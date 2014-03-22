@@ -8,7 +8,7 @@ class LatestEntriesFeed(Feed):
     description = "Test description ..."
 
     def items(self):
-        return Blog.objects.order_by('-display_date')[:10]
+        return Blog.objects.filter(status='published').order_by('-display_date')[:20]
 
     def item_title(self, item):
         return item.title

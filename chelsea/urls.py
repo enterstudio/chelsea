@@ -1,12 +1,22 @@
 from django.conf.urls import patterns, include, url
+from django.contrib.sitemaps import GenericSitemap
 
 # feeds
 from blog.feeds import LatestEntriesFeed
+from blog.models import Blog
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 
 admin.autodiscover()
+
+blogsiteDict = {
+    'queryset': Blog.objects.filter(status='published'),
+    'date_field': 'display_date',
+}
+sitemaps = {
+    'blog': GenericSitemap(blogsiteDict, priority=0.6),
+}
 
 urlpatterns = patterns('',
     # Examples:
@@ -30,4 +40,5 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^ckeditor/', include('ckeditor.urls')),
+    url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps})
 )
