@@ -28,6 +28,9 @@
     <link rel="stylesheet" href="/static/blog/css/pages/page_magazine.css">    
     <!-- CSS Theme -->    
     <link rel="stylesheet" href="/static/blog/css/themes/default.css" id="style_color">
+    <style>
+        div.googlesearch .gsc-search-button { box-sizing: content-box; }
+    </style>
     {% block styles %}{% endblock %}
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -228,11 +231,20 @@
                     <li class="hidden-sm"><a class="search"><i class="icon-search search-btn"></i></a></li>
                 </ul>
                 <div class="search-open">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-btn">
-                            <button class="btn-u" type="button">Go</button>
-                        </span>
+                    <div class="input-group googlesearch" style="box-sizing: content-box;">
+                                <script>
+                                  (function() {
+                                    var cx = '009385402654609038006:qg_2gz7zcna';
+                                    var gcse = document.createElement('script');
+                                    gcse.type = 'text/javascript';
+                                    gcse.async = true;
+                                    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                                        '//www.google.com/cse/cse.js?cx=' + cx;
+                                    var s = document.getElementsByTagName('script')[0];
+                                    s.parentNode.insertBefore(gcse, s);
+                                  })();
+                                </script>
+                                <gcse:search></gcse:search>
                     </div><!-- /input-group -->
                 </div>                
             </div><!-- /navbar-collapse -->
@@ -248,7 +260,9 @@
     
     <div class="container">
         <h1 class="pull-left">{% block categorySubheader %}{% endblock %}</h1>
-        <ul class="pull-right breadcrumb">      
+
+        <ul class="pull-right breadcrumb">
+
             <li><a href="http://www.hichelsea.com">Home</a></li>
             <li class="active">Blog</li>
         </ul>
@@ -298,7 +312,24 @@
 
             {% block recent_posts %}{% endblock %}
             
-
+            {% comment %}
+            <div class="headline headline-md"><h2>Search</h2></div>
+            <div>     
+                <script>
+                  (function() {
+                    var cx = '009385402654609038006:qg_2gz7zcna';
+                    var gcse = document.createElement('script');
+                    gcse.type = 'text/javascript';
+                    gcse.async = true;
+                    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                        '//www.google.com/cse/cse.js?cx=' + cx;
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(gcse, s);
+                  })();
+                </script>
+                <gcse:search></gcse:search>
+            </div>
+            {% endcomment %}
         	<!-- Tabs Widget -->
         	<div class="headline headline-md"><h2>Tabs Widget</h2></div>
             <div class="tab-v2 margin-bottom-40">
