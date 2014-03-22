@@ -70,13 +70,14 @@ CKEDITOR_CONFIGS = {
         'toolbar': [
             ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat', 'SpellChecker', 'Undo', 'Redo'],
             ['Link', 'Image', 'Table', 'HorizontalRule'],
-            ['TextColor', 'BGColor'],
+            ['spellchecker','TextColor', 'BGColor'],
             ['Smiley', 'SpecialChar'], ['Source'],
         ],
         'height': 291,
         'width': 835,
         'filebrowserWindowWidth': 940,
         'filebrowserWindowHeight': 725,
+        'extraPlugins' : 'wsc'
     },
 }
 
