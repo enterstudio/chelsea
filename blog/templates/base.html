@@ -8,8 +8,9 @@
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="Local news and commentary about Chelsea New York City">
     <meta name="author" content="">
+    <meta name="google-site-verification" content="cUxdQZbI5mHNUz7UBpgyiJYhD8eRMRCZ2Q1OAz6JNcg" />
     {% block entry_meta %}{% endblock %}
 
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/feeds/latest" />
@@ -279,6 +280,12 @@
             </div>
             <!-- End Social Icons -->
 
+            {% comment %}<div>
+                <div class="headline headline-md"><h2>Upcoming in Chelsea</h2></div>
+                <iframe src="https://www.google.com/calendar/embed?title=Upcoming%20Events%20in%20Chelsea&amp;showTitle=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;mode=AGENDA&amp;height=300&amp;wkst=1&amp;bgcolor=%23ffffff&amp;src=hichelseablog%40gmail.com&amp;color=%232952A3&amp;ctz=America%2FNew_York" style=" border:0px " width="300" height="300" frameborder="0" scrolling="no"></iframe>
+            </div>
+            {% endcomment %}
+
             {% block recent_posts %}{% endblock %}
             
 
@@ -469,18 +476,15 @@
 <!--[if lt IE 9]>
     <script src="/static/blog/plugins/respond.js"></script>
 <![endif]-->
-<script type="text/javascript">
-  // var _gaq = _gaq || [];
-  // _gaq.push(['_setAccount', 'UA-29166220-1']);
-  // _gaq.push(['_setDomainName', 'chelsea']);
-  // _gaq.push(['_trackPageview']);
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  // (function() {
-  //   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  //   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-  //   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  // })();
+  ga('create', 'UA-49220407-1', 'hichelsea.com');
+  ga('send', 'pageview');
+
 </script>
-
 </body>
 </html>	
