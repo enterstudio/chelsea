@@ -11,10 +11,12 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'blog.views.index', name='index'),
+    
     url(r'^(?P<year>\d{4})/(?P<month>\d{2})/(?P<slug>[-\w]+)/$', 
     	'blog.views.view_post', 
     	name='view_blog_post'),
-	url(r'^category/(?P<slug>[^\.]+)', 
+	
+    url(r'^category/(?P<categorySlug>[^\.]+)', 
 		'blog.views.view_category', 
 		name='view_blog_category'
 	),

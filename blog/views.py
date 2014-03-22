@@ -59,9 +59,42 @@ def view_post(request, slug, year, month,):
     }
     return render_to_response('blog_entry.html', template_data)
 
-def view_category(request, slug):
-    category = get_object_or_404(Category, slug=slug)
+def view_category(request, categorySlug):
+    # Get specified category
+    posts = Blog.objects.filter(status='published').order_by('-display_date')
+    logging.info(posts)
+    category_posts = []
+    for post in posts:
+        if post.categories.filter(slug=categorySlug):
+            category_posts.append(post)
+
+    # Add pagination
+    paginator = Paginator(category_posts, 10)
+
+    # Get the category
+    category = Category.objects.filter(slug=categorySlug)[0]
+
+    # Get the specified page
+    page = request.GET.get('page')
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        posts = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        posts = paginator.page(paginator.num_pages)
+
+    # Display all the posts
     return render_to_response('view_category.html', {
+        'posts': posts,
         'category': category,
-        'posts': Blog.objects.filter(category=category)[:5]
+        'baseContainerClasses' : ['blog_page']
     })
+
+# def view_category(request, slug):
+#     category = get_object_or_404(Category, slug=slug)
+#     return render_to_response('view_category.html', {
+#         'category': category,
+#         'posts': Blog.objects.filter(category=category)[:5]
+#     })
