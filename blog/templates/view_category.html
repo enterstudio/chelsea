@@ -42,6 +42,18 @@
                 	<h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
                     <p>{{post.display_date|date:"M d, Y"}}</p>
                     
+                    {% if post.categories|length > 0 %}
+                    <ul class="list-unstyled list-inline blog-tags">
+                        <li>
+                            <i class="icon-tags"></i>
+                            {% for category in post.categories.all %} 
+                            <a href="/category/{{category.slug}}">{{ category.title }}</a>
+                            {% endfor %}
+                            
+                        </li>
+                    </ul>
+                    {% endif %} 
+
                 	{% autoescape off %}
 					{{ post.body|striptags|truncatewords:40 }}
 					{% endautoescape %}
