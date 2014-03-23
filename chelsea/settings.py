@@ -2,9 +2,11 @@
 import os
 import urlparse
 import dj_database_url
-import logging
+
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS as TCP
 
 # Get an instance of a logger
+import logging
 logger = logging.getLogger('blog.logger')
 
 
@@ -107,6 +109,10 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+TEMPLATE_CONTEXT_PROCESSORS = TCP + (
+    'django.core.context_processors.request',
+)
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -129,6 +135,7 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
+    'suit',    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
