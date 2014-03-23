@@ -21,38 +21,51 @@
 </style>
 {% endblock %}
 {% block content %}
-	<h2>{{ post.title }}</h2>
-	<div class="blog-post-tags">
-        <div class="clearfix">
-        <p class="pull-left"><i class="icon-calendar"></i> {{post.display_date|date:"M d, Y"}}
+<div class="row blog_post_display">
+    <div class="col-md-2 col-lg-2 visible-lg visible-md">
+            <p class="pull-right">{{post.display_date|date:"M d, Y"}}
+            </p>
         
-        {% if post.categories|length > 0 %}
-        <ul class="list-unstyled list-inline blog-tags pull-right">
-            <li>
-                <i class="icon-tags"></i>
-                {% for category in post.categories.all %} 
-                <a href="/category/{{category.slug}}">{{ category.title }}</a>
-                {% endfor %}
-                
-            </li>
-        </ul>
-        {% endif %} 
-        </p>
-        </div>                                    
     </div>
 
-    <div class="blog-img">
-        {% if post.main_photo %}
-        <img class="img-responsive" src="https://chchchelsea.s3.amazonaws.com/{{post.main_photo}}" alt="{{post.main_photo_alt_text}}">
-        {% endif %}
+    <div class="col-md-9 col-lg-9">
+        <h2><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h2>
+        <div class="clearfix"> 
+            <p class="pull-right hidden-lg hidden-md">{{post.display_date|date:"M d, Y"}}
+            </p>
+            {% if post.categories|length > 0 %}
+                <ul class="list-unstyled list-inline blog-tags pull-left">
+                    <li>
+                        <i class="hide icon-tags"></i>
+                        {% for category in post.categories.all %} 
+                        <a href="/category/{{category.slug}}">{{ category.title }}</a>
+                        {% endfor %}
+                        
+                    </li>
+                </ul>
+            {% endif %} 
+        </div>
+       
+        
+
+        <div class="blog-img">
+            {% if post.main_photo %}
+                {% thumbnail post.s3_main_image_url "720" as postImg %}
+                <img class="img-responsive" src="{{ postImg.url }}" alt="{{post.main_photo_alt_text}}">
+                {% endthumbnail %}
+            
+            {% endif %}
+        </div>
+        
+        <br><br>
+
+        {% autoescape off %}
+        {{ post.body }}
+        {% endautoescape %}
+
+       <hr class="margin-bottom-40">
     </div>
-    
-    <br><br>
-
-    {% autoescape off %}
-    {{ post.body }}
-    {% endautoescape %}
-
+</div> 
     <ul class="pager">
         {% if previousPost %}
         <li class="previous"><a href="{{previousPost.get_absolute_url}}">
