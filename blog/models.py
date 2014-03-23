@@ -83,6 +83,9 @@ class CategoryToPost(models.Model):
     post = models.ForeignKey(Blog)
     category = models.ForeignKey(Category)
 
+class Blurb(models.Model):
+  name = models.CharField(max_length=25,unique=True, db_index=True)
+  content = RichTextField(config_name='awesome_ckeditor')
 
 class Photo(models.Model):
     title = models.CharField(max_length=100)

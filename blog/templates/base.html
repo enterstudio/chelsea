@@ -1,3 +1,4 @@
+{% load blog_blurbs %}
 <!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->  
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->  
@@ -262,7 +263,7 @@
                 </ul>                
                 <div class="tab-content">
                     <div id="home-1" class="tab-pane active">
-                        <p>Vivamus imperdiet condimentum diam, eget placerat felis consectetur id. Donec eget orci metus, ac ac adipiscing nunc.</p> <p>Pellentesque fermentum, ante ac felis consectetur id. Donec eget orci metusvivamus imperdiet.</p>                        
+                        {% get_blurb 'sidebar_about_us' %}                        
                     </div>
                     <div id="home-2" class="tab-pane magazine-sb-categories">
                         <div class="row">
@@ -294,17 +295,7 @@
                     <li><a class="social_rss" data-original-title="Feed" href="/feeds/latest/"></a></li>
                     <li><a class="social_facebook" data-original-title="Facebook" href="blog_medium.html#"></a></li>
                     <li><a class="social_twitter" data-original-title="Twitter" href="blog_medium.html#"></a></li>
-                    {% comment %}<li><a class="social_vimeo" data-original-title="Vimeo" href="blog_medium.html#"></a></li>
-                    <li><a class="social_googleplus" data-original-title="Goole Plus" href="blog_medium.html#"></a></li>
-                    <li><a class="social_pintrest" data-original-title="Pinterest" href="blog_medium.html#"></a></li>
-                    <li><a class="social_linkedin" data-original-title="Linkedin" href="blog_medium.html#"></a></li>
-                    <li><a class="social_dropbox" data-original-title="Dropbox" href="blog_medium.html#"></a></li>
-                    <li><a class="social_picasa" data-original-title="Picasa" href="blog_medium.html#"></a></li>
-                    <li><a class="social_spotify" data-original-title="Spotify" href="blog_medium.html#"></a></li>
-                    <li><a class="social_jolicloud" data-original-title="Jolicloud" href="blog_medium.html#"></a></li>
-                    <li><a class="social_wordpress" data-original-title="Wordpress" href="blog_medium.html#"></a></li>
-                    <li><a class="social_github" data-original-title="Github" href="blog_medium.html#"></a></li>
-                    <li><a class="social_xing" data-original-title="Xing" href="blog_medium.html#"></a></li>{% endcomment %}
+                    
                 </ul>
                 <div class="clearfix"></div>                
             </div>

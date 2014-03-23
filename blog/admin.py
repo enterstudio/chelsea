@@ -1,5 +1,5 @@
 from django.contrib import admin
-from blog.models import Blog, Category, CategoryToPost
+from blog.models import Blog, Category, CategoryToPost, Blurb
 from django.contrib.auth.models import User
 
 from datetime import datetime
@@ -25,9 +25,13 @@ class BlogAdmin(admin.ModelAdmin):
 		obj.save()
 	
 
+class BlurbAdmin(admin.ModelAdmin):
+	list_display = ['name']
+	fields = ('name','content')
 
 admin.site.register(Blog,BlogAdmin)
 admin.site.register(Category,CategoryAdmin)
+admin.site.register(Blurb, BlurbAdmin)
 
 # class PhotoAdmin(admin.ModelAdmin):
 # 	fields = ('title','description','file',)
