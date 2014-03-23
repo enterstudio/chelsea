@@ -146,7 +146,8 @@ INSTALLED_APPS = (
     'ckeditor',
     'storages',
     'blog',
-    'redis_cache'
+    'redis_cache',
+    'robots'
 )
 
 # A sample logging configuration. The only tangible logging
@@ -228,30 +229,34 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 AWS_QUERYSTRING_AUTH = False
 
+# ROBOTS
+ROBOTS_SITEMAP_URLS = [
+    'http://www.hichelsea.com/sitemap.xml',
+]
 
 # REDIS CACHE
-# if os.environ.get('BUILD')=='DEV':
-#     CACHES = {
-#         "default": {
-#             "BACKEND": "redis_cache.cache.RedisCache",
-#             'LOCATION': 'localhost:6379:0',
-#             "OPTIONS": {
-#                 "CLIENT_CLASS": "redis_cache.client.DefaultClient",
-#             }
-#         }
-#     }
-#     logger.info("LOCAL CACHE")
-# else:
-#     redis_url = urlparse.urlparse(os.environ.get('REDISCLOUD_URL'))
+if os.environ.get('BUILD')=='DEV':
+    CACHES = {
+        "default": {
+            "BACKEND": "redis_cache.cache.RedisCache",
+            'LOCATION': 'localhost:6379:0',
+            "OPTIONS": {
+                "CLIENT_CLASS": "redis_cache.client.DefaultClient",
+            }
+        }
+    }
+    logger.info("LOCAL CACHE")
+else:
+    redis_url = urlparse.urlparse(os.environ.get('REDISCLOUD_URL'))
 
-#     CACHES = {
-#         "default": {
-#             "BACKEND": "redis_cache.cache.RedisCache",
-#             'LOCATION': '%s:%s:0' % (redis_url.hostname, redis_url.port),
-#             "OPTIONS": {
-#                 "PASSWORD":redis_url.password,
-#                 "CLIENT_CLASS": "redis_cache.client.DefaultClient",
-#             }
-#         }
-#     }
-#     logger.info("REDISCLOUD CACHE")
+    CACHES = {
+        "default": {
+            "BACKEND": "redis_cache.cache.RedisCache",
+            'LOCATION': '%s:%s:0' % (redis_url.hostname, redis_url.port),
+            "OPTIONS": {
+                "PASSWORD":redis_url.password,
+                "CLIENT_CLASS": "redis_cache.client.DefaultClient",
+            }
+        }
+    }
+    logger.info("REDISCLOUD CACHE")

@@ -41,5 +41,6 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^ckeditor/', include('ckeditor.urls')),
-    url(r'^sitemap\.xml$', cache_page(86400)(sitemap), {'sitemaps': sitemaps})
+    url(r'^sitemap\.xml$', cache_page(86400)(sitemap), {'sitemaps': sitemaps}),
+    url(r'^robots\.txt$', include('robots.urls')),
 )
