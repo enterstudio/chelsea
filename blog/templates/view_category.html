@@ -1,23 +1,18 @@
 {% extends 'base.html' %}
 {% load thumbnail %}
 {% block head_title %}{{category.title}} - Hi Chelsea{% endblock %}
+{% if category %}
 {% block categorySubheader %}{{category.title}}{% endblock %}
+{% endif %}
+
 
 {% block content %}
 
-    	{% if posts %}
-	        
-	        {% for post in posts %}
-        	<!--Blog Post-->
-            <div class="row blog blog-medium margin-bottom-40">
-                <div class="col-md-5">
-                    {% if post.main_photo %}
-                    <a href="{{ post.get_absolute_url }}"><img class="img-responsive" src="https://chchchelsea.s3.amazonaws.com/{{post.main_photo}}" alt=""></a>
-                    {% endif %}
-                </div>    
-                <div class="col-md-7">
-                	<h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-                    <div class="clearfix">
+        {% if posts %}
+            
+            {% for post in posts %}
+            <h2><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h2>
+                <div class="clearfix">
                     <p class="pull-left"><i class="icon-calendar"></i> {{post.display_date|date:"M d, Y"}}
                     
                     {% if post.categories|length > 0 %}
@@ -34,19 +29,24 @@
                     </p>
                     </div>
 
-                	{% autoescape off %}
-					{{ post.body|striptags|truncatewords:40 }}
-					{% endautoescape %}
-                </div>    
-            </div>
-            <!--End Blog Post--> 
-        	<hr class="margin-bottom-40">    
-	        {% endfor %}
-	        
-	        
-	    {% else %}
-	        <p>There are no posts.</p>
-	    {% endif %}
+                <div class="blog-img">
+                    {% if post.main_photo %}
+                        {% thumbnail rp.s3_main_image_url "720" as postImg %}
+                        <img src="{{ postImg.url }}" alt="{{post.main_photo_alt_text}}">
+                        {% endthumbnail %}
+                    {% endif %}
+                </div>
+
+                {% autoescape off %}
+                {{ post.body }}
+                {% endautoescape %} 
+            <hr class="margin-bottom-40">    
+            {% endfor %}
+            
+            
+        {% else %}
+            <p>There are no posts.</p>
+        {% endif %}
                    
         <ul class="pager">
             {% if posts.has_previous %}
@@ -60,7 +60,7 @@
             {% endif %}
         </ul>
         
-    	{% comment %}
+        {% comment %}
         <!--Pagination-->
          <div class="text-center">
             <ul class="pagination">
@@ -80,7 +80,6 @@
         {% endcomment %}
    
 {% endblock %}
-
 
 {% block recent_posts %}
 <!-- Posts -->

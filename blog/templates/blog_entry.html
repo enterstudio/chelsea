@@ -23,16 +23,11 @@
 {% block content %}
 	<h2>{{ post.title }}</h2>
 	<div class="blog-post-tags">
-        <ul class="list-unstyled list-inline blog-info">
-            <li><i class="icon-calendar"></i>{{post.display_date|date:"M d, Y"}}</li>
-            {% comment %}
-            <li><i class="icon-pencil"></i> Diana Anderson</li>
-            <li><i class="icon-comments"></i> <a href="blog_item_option1.html#">24 Comments</a></li>
-            {% endcomment %}
-        </ul>
-
+        <div class="clearfix">
+        <p class="pull-left"><i class="icon-calendar"></i> {{post.display_date|date:"M d, Y"}}
+        
         {% if post.categories|length > 0 %}
-        <ul class="list-unstyled list-inline blog-tags">
+        <ul class="list-unstyled list-inline blog-tags pull-right">
             <li>
                 <i class="icon-tags"></i>
                 {% for category in post.categories.all %} 
@@ -41,7 +36,9 @@
                 
             </li>
         </ul>
-        {% endif %}                                      
+        {% endif %} 
+        </p>
+        </div>                                    
     </div>
 
     <div class="blog-img">

@@ -275,14 +275,49 @@
 <div class="container">
 	<div class="row {{ baseContainerClasses|join:" " }}">    
         <!-- Left Sidebar -->
-    	<div class="col-md-9 md-margin-bottom-40">	
+    	<div class="col-md-8 md-margin-bottom-40">	
 		{% block content %}{% endblock %}
 		</div>
 		 <!-- Right Sidebar -->
     	
     	<div class="col-md-3">
+
+            <!-- Tabs Widget -->
+            <div class="headline headline-md"><h2>Tabs Widget</h2></div>
+            <div class="tab-v2 margin-bottom-40">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="blog_medium.html#home-1">About Us</a></li>
+                    <li><a data-toggle="tab" href="blog_medium.html#home-2">Quick Links</a></li>
+                </ul>                
+                <div class="tab-content">
+                    <div id="home-1" class="tab-pane active">
+                        <p>Vivamus imperdiet condimentum diam, eget placerat felis consectetur id. Donec eget orci metus, ac ac adipiscing nunc.</p> <p>Pellentesque fermentum, ante ac felis consectetur id. Donec eget orci metusvivamus imperdiet.</p>                        
+                    </div>
+                    <div id="home-2" class="tab-pane magazine-sb-categories">
+                        <div class="row">
+                            <ul class="list-unstyled col-xs-6">
+                                <li><a href="blog_medium.html#">Best Sliders</a></li>
+                                <li><a href="blog_medium.html#">Parralax Page</a></li>
+                                <li><a href="blog_medium.html#">Backgrounds</a></li>
+                                <li><a href="blog_medium.html#">Parralax Slider</a></li>
+                                <li><a href="blog_medium.html#">Responsive</a></li>
+                                <li><a href="blog_medium.html#">800+ Icons</a></li>
+                            </ul>                        
+                            <ul class="list-unstyled col-xs-6">
+                                <li><a href="blog_medium.html#">60+ Pages</a></li>
+                                <li><a href="blog_medium.html#">Layer Slider</a></li>
+                                <li><a href="blog_medium.html#">Bootstrap 3</a></li>
+                                <li><a href="blog_medium.html#">Fixed Header</a></li>
+                                <li><a href="blog_medium.html#">Best Template</a></li>
+                                <li><a href="blog_medium.html#">And Many More</a></li>
+                            </ul>                        
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            <!-- End Tabs Widget -->
             <!-- Social Icons -->
-            <div class="magazine-sb-social margin-bottom-30">
+            <div class="bg-lite magazine-sb-social margin-bottom-30">
                 <div class="headline headline-md"><h2>Follow us</h2></div>
                 <ul class="social-icons social-icons-color">
                     <li><a class="social_rss" data-original-title="Feed" href="/feeds/latest/"></a></li>
@@ -330,40 +365,7 @@
                 <gcse:search></gcse:search>
             </div>
             {% endcomment %}
-        	<!-- Tabs Widget -->
-        	<div class="headline headline-md"><h2>Tabs Widget</h2></div>
-            <div class="tab-v2 margin-bottom-40">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="blog_medium.html#home-1">About Us</a></li>
-                    <li><a data-toggle="tab" href="blog_medium.html#home-2">Quick Links</a></li>
-                </ul>                
-                <div class="tab-content">
-                    <div id="home-1" class="tab-pane active">
-                        <p>Vivamus imperdiet condimentum diam, eget placerat felis consectetur id. Donec eget orci metus, ac ac adipiscing nunc.</p> <p>Pellentesque fermentum, ante ac felis consectetur id. Donec eget orci metusvivamus imperdiet.</p>                        
-                    </div>
-                    <div id="home-2" class="tab-pane magazine-sb-categories">
-                        <div class="row">
-                            <ul class="list-unstyled col-xs-6">
-                                <li><a href="blog_medium.html#">Best Sliders</a></li>
-                                <li><a href="blog_medium.html#">Parralax Page</a></li>
-                                <li><a href="blog_medium.html#">Backgrounds</a></li>
-                                <li><a href="blog_medium.html#">Parralax Slider</a></li>
-                                <li><a href="blog_medium.html#">Responsive</a></li>
-                                <li><a href="blog_medium.html#">800+ Icons</a></li>
-                            </ul>                        
-                            <ul class="list-unstyled col-xs-6">
-                                <li><a href="blog_medium.html#">60+ Pages</a></li>
-                                <li><a href="blog_medium.html#">Layer Slider</a></li>
-                                <li><a href="blog_medium.html#">Bootstrap 3</a></li>
-                                <li><a href="blog_medium.html#">Fixed Header</a></li>
-                                <li><a href="blog_medium.html#">Best Template</a></li>
-                                <li><a href="blog_medium.html#">And Many More</a></li>
-                            </ul>                        
-                        </div>
-                    </div>
-                </div>
-            </div>            
-            <!-- End Tabs Widget -->
+
 
         	<!-- Photo Stream -->
         	<div class="headline headline-md"><h2>Photo Stream</h2></div>

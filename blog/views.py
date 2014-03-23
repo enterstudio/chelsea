@@ -94,7 +94,7 @@ def view_category(request, categorySlug):
         posts = paginator.page(paginator.num_pages)
 
     # Display all the posts
-    return render_to_response('view_category.html', {
+    return render_to_response('index.html', {
         'posts': posts,
         'category': category,
         'recentPosts' : Blog.objects.filter(status='published').order_by('-display_date')[:3],
