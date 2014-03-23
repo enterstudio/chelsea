@@ -38,8 +38,8 @@
 	        
 	        {% for post in posts %}
             <div class="row">
-                <div class="col-md-2">
-                        <p class="pull-right"><i class="hide icon-calendar"></i> {{post.display_date|date:"M d, Y"}}
+                <div class="col-md-2 visible-lg visible-md">
+                        <p class="pull-right">{{post.display_date|date:"M d, Y"}}
                         </p>
                     
                 </div>
@@ -47,6 +47,8 @@
                 <div class="col-md-7">
                     <h2><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h2>
                     <div class="clearfix"> 
+                        <p class="pull-right hidden-lg hidden-md">{{post.display_date|date:"M d, Y"}}
+                        </p>
                         {% if post.categories|length > 0 %}
                             <ul class="list-unstyled list-inline blog-tags pull-left">
                                 <li>
