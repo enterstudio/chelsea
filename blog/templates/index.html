@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block head_title %}Hi Chelsea{% endblock %}
 
+{% load thumbnail %}
 {% block categories %}
     <h2>Categories</h2>
     {% if categories %}
@@ -35,7 +36,11 @@
             <div class="row blog blog-medium margin-bottom-40">
                 <div class="col-md-5">
                     {% if post.main_photo %}
-                    <a href="{{ post.get_absolute_url }}"><img class="img-responsive" src="https://chchchelsea.s3.amazonaws.com/{{post.main_photo}}" alt=""></a>
+                    <a href="{{ post.get_absolute_url }}">
+                        {% thumbnail post.s3_main_image_url "720" as postImg %}
+                        <img class="img-responsive" src="{{ postImg.url }}" alt="{{post.main_photo_alt_text}}">
+                        {% endthumbnail %}
+                        {# <img class="img-responsive" src='{{post.s3_main_image_url}}' alt="{{post.main_photo_alt_text}}"></a>{{post.s3_main_image_url}} #}
                     {% endif %}
                 </div>    
                 <div class="col-md-7">
@@ -115,7 +120,11 @@
     {% for rp in recentPosts %}
     <dl class="dl-horizontal">
         {% if rp.main_photo %}
-        <dt><a href="{{rp.get_absolute_url}}"><img src="https://chchchelsea.s3.amazonaws.com/{{rp.main_photo}}" alt="{{rp.main_photo_alt_text}}" /></a></dt>
+        <dt><a href="{{rp.get_absolute_url}}">
+            {% thumbnail rp.s3_main_image_url "100x100" crop="80% top" as thumb %}
+                <img src="{{ thumb.url }}" alt="thumbnail: {{rp.main_photo_alt_text}}">
+            {% endthumbnail %}
+           </a></dt>
         {% endif %}
         <dd>
             <p><a href="{{rp.get_absolute_url}}">{{rp.title}}</a></p> 

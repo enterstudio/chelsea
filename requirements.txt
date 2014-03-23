@@ -13,10 +13,13 @@ django-redis-cache==0.11.1
 django-robots==1.0
 django-storages==1.1.8
 django-suit==0.2.7
+django-suit-redactor==0.0.2
+django-wysiwyg-redactor==0.3.8.2
 gunicorn==18.0
 hiredis==0.1.2
 psycopg2==2.5.1
 pystache==0.5.3
 redis==2.9.1
+sorl-thumbnail==11.12
 static==0.4
 wsgiref==0.1.2

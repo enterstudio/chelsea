@@ -73,6 +73,12 @@ class Blog(models.Model):
             return ''
     admin_main_photo.allow_tags = True
 
+    def s3_main_image_url(self):
+        if self.main_photo:
+            return 'http://chchchelsea.s3.amazonaws.com/%s' % self.main_photo
+        else:
+            return ''
+
 class CategoryToPost(models.Model):
     post = models.ForeignKey(Blog)
     category = models.ForeignKey(Category)
