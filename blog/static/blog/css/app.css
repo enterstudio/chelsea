@@ -13,13 +13,13 @@
 }
 
 body { 
-   color: #333; 
-   font-size: 13px;
+   color: #000; 
+   font-size: 15px;
    line-height: 1.6;
 }
 
 p, a, li { 
-   color: #555;
+   color: #000;
    line-height: 1.6; 
 }
 

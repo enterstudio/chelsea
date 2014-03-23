@@ -93,9 +93,23 @@
     </div>      
 </div><!--/top-->
 <!--=== End Top ===-->    
+<!--=== Breadcrumbs ===-->
+{%comment%} <div class="breadcrumbs ">
+    
+    <div class="container">
+        <h1 class="pull-left">{% block categorySubheader %}{% endblock %}</h1>
 
-<!--=== Header ===-->    
-<div class="header">
+        <ul class="pull-right breadcrumb">
+
+            <li><a href="http://www.hichelsea.com">Home</a></li>
+            <li class="active">Blog</li>
+        </ul>
+    </div>
+   
+</div>{% endcomment %}<!--/breadcrumbs-->
+<!--=== End Breadcrumbs ===-->
+<!--=== Header ===-->
+<div class="header margin-bottom-40" >
 
     <div class="navbar navbar-default" role="navigation">
         <div class="container">
@@ -255,27 +269,15 @@
 </div><!--/header-->
 <!--=== End Header ===-->    
 
-<!--=== Breadcrumbs ===-->
-<div class="breadcrumbs margin-bottom-40">
-    
-    <div class="container">
-        <h1 class="pull-left">{% block categorySubheader %}{% endblock %}</h1>
-
-        <ul class="pull-right breadcrumb">
-
-            <li><a href="http://www.hichelsea.com">Home</a></li>
-            <li class="active">Blog</li>
-        </ul>
-    </div>
-   
-</div><!--/breadcrumbs-->
-<!--=== End Breadcrumbs ===-->
+<div class="hide container">
+    <img class="img-responsive" src='/static/blog/img/chelseawide-med.jpg'/>
+</div>
 
 <!--=== Content Part ===-->
 <div class="container">
 	<div class="row {{ baseContainerClasses|join:" " }}">    
         <!-- Left Sidebar -->
-    	<div class="col-md-7 col-md-offset-1 md-margin-bottom-40">	
+    	<div class="col-md-9 md-margin-bottom-40">	
 		{% block content %}{% endblock %}
 		</div>
 		 <!-- Right Sidebar -->
@@ -283,7 +285,6 @@
     	<div class="col-md-3">
 
             <!-- Tabs Widget -->
-            <div class="headline headline-md"><h2>Tabs Widget</h2></div>
             <div class="tab-v2 margin-bottom-40">
                 <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="blog_medium.html#home-1">About Us</a></li>
@@ -419,7 +420,7 @@
 <div class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-md-4 md-margin-bottom-40">
+            <div class="col-md-3 md-margin-bottom-40">
                 <!-- About -->
                 <div class="headline"><h2>About</h2></div>  
                 <p class="margin-bottom-25 md-margin-bottom-40">Hi Chelsea is a blog about Chelsea, New York City.</p>
@@ -473,7 +474,7 @@
                 <!-- Stay Connected -->
                 <div class="headline"><h2>Stay Connected</h2></div> 
                 <ul class="social-icons">
-                    <li><a href="/feed/latest" data-original-title="Feed" class="social_rss"></a></li>
+                    <li><a href="/feeds/latest" data-original-title="Feed" class="social_rss"></a></li>
                     <li><a href="blog_medium.html#" data-original-title="Facebook" class="social_facebook"></a></li>
                     <li><a href="blog_medium.html#" data-original-title="Twitter" class="social_twitter"></a></li>
                     
@@ -491,14 +492,10 @@
             <div class="col-md-6">                      
                 <p class="copyright-space">
                     2014 &copy; Hi Chelsea. ALL Rights Reserved. 
-                    <a href="blog_medium.html#">Privacy Policy</a> | <a href="blog_medium.html#">Terms of Service</a>
+                    
                 </p>
             </div>
-            <div class="col-md-6">  
-                <a href="index.html">
-                    <img id="logo-footer" src="/static/blog/img/logo2-default.png" class="pull-right" alt="" />
-                </a>
-            </div>
+            
         </div><!--/row-->
     </div><!--/container--> 
 </div><!--/copyright--> 

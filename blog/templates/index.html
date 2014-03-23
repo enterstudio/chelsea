@@ -37,39 +37,49 @@
     	{% if posts %}
 	        
 	        {% for post in posts %}
-        	<h2><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h2>
-                <div class="clearfix">
-                    <p class="pull-left"><i class="icon-calendar"></i> {{post.display_date|date:"M d, Y"}}
+            <div class="row">
+                <div class="col-md-2">
+                        <p class="pull-right"><i class="hide icon-calendar"></i> {{post.display_date|date:"M d, Y"}}
+                        </p>
                     
-                    {% if post.categories|length > 0 %}
-                    <ul class="list-unstyled list-inline blog-tags pull-right">
-                        <li>
-                            <i class="icon-tags"></i>
-                            {% for category in post.categories.all %} 
-                            <a href="/category/{{category.slug}}">{{ category.title }}</a>
-                            {% endfor %}
-                            
-                        </li>
-                    </ul>
-                    {% endif %} 
-                    </p>
-                    </div>
-
-                <div class="blog-img">
-                    {% if post.main_photo %}
-                        {% thumbnail post.s3_main_image_url "720" as postImg %}
-                        <img class="img-responsive" src="{{ postImg.url }}" alt="{{post.main_photo_alt_text}}">
-                        {% endthumbnail %}
-                    
-                    {% endif %}
                 </div>
-                
-                <br><br>
 
-                {% autoescape off %}
-                {{ post.body }}
-                {% endautoescape %} 
-        	<hr class="margin-bottom-40">    
+                <div class="col-md-7">
+                    <h2><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h2>
+                    <div class="clearfix"> 
+                        {% if post.categories|length > 0 %}
+                            <ul class="list-unstyled list-inline blog-tags pull-left">
+                                <li>
+                                    <i class="hide icon-tags"></i>
+                                    {% for category in post.categories.all %} 
+                                    <a href="/category/{{category.slug}}">{{ category.title }}</a>
+                                    {% endfor %}
+                                    
+                                </li>
+                            </ul>
+                        {% endif %} 
+                    </div>
+            	   
+                    
+
+                    <div class="blog-img">
+                        {% if post.main_photo %}
+                            {% thumbnail post.s3_main_image_url "720" as postImg %}
+                            <img class="img-responsive" src="{{ postImg.url }}" alt="{{post.main_photo_alt_text}}">
+                            {% endthumbnail %}
+                        
+                        {% endif %}
+                    </div>
+                    
+                    <br><br>
+
+                    {% autoescape off %}
+                    {{ post.body }}
+                    {% endautoescape %}
+
+            	   <hr class="margin-bottom-40">
+                </div>
+            </div> 
 	        {% endfor %}
 	        
 	        
