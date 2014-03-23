@@ -97,5 +97,6 @@ def view_category(request, categorySlug):
     return render_to_response('view_category.html', {
         'posts': posts,
         'category': category,
+        'recentPosts' : Blog.objects.filter(status='published').order_by('-display_date')[:3],
         'baseContainerClasses' : ['blog_page','blog_category']
     })

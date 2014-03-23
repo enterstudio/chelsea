@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 {% block head_title %}{{category.title}} - Hi Chelsea{% endblock %}
 {% block categorySubheader %}{{category.title}}{% endblock %}
 
@@ -16,10 +17,11 @@
                 </div>    
                 <div class="col-md-7">
                 	<h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-                    <p>{{post.display_date|date:"M d, Y"}}</p>
+                    <div class="clearfix">
+                    <p class="pull-left"><i class="icon-calendar"></i> {{post.display_date|date:"M d, Y"}}
                     
                     {% if post.categories|length > 0 %}
-                    <ul class="list-unstyled list-inline blog-tags">
+                    <ul class="list-unstyled list-inline blog-tags pull-right">
                         <li>
                             <i class="icon-tags"></i>
                             {% for category in post.categories.all %} 
@@ -29,6 +31,8 @@
                         </li>
                     </ul>
                     {% endif %} 
+                    </p>
+                    </div>
 
                 	{% autoescape off %}
 					{{ post.body|striptags|truncatewords:40 }}
@@ -85,7 +89,11 @@
     {% for rp in recentPosts %}
     <dl class="dl-horizontal">
         {% if rp.main_photo %}
-        <dt><a href="{{rp.get_absolute_url}}"><img src="https://chchchelsea.s3.amazonaws.com/{{rp.main_photo}}" alt="{{rp.main_photo_alt_text}}" /></a></dt>
+        <dt><a href="{{rp.get_absolute_url}}">
+            {% thumbnail rp.s3_main_image_url "100x100" crop="80% top" as thumb %}
+                <img src="{{ thumb.url }}" alt="thumbnail: {{rp.main_photo_alt_text}}">
+            {% endthumbnail %}
+        </a></dt>
         {% endif %}
         <dd>
             <p><a href="{{rp.get_absolute_url}}">{{rp.title}}</a></p> 
