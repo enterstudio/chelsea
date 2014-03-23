@@ -39,11 +39,13 @@
                     {% endif %}
                 </div>    
                 <div class="col-md-7">
-                	<h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-                    <p>{{post.display_date|date:"M d, Y"}}</p>
+                	
+                    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+                    <div class="clearfix">
+                    <p class="pull-left"><i class="icon-calendar"></i> {{post.display_date|date:"M d, Y"}}
                     
                     {% if post.categories|length > 0 %}
-                    <ul class="list-unstyled list-inline blog-tags">
+                    <ul class="list-unstyled list-inline blog-tags pull-right">
                         <li>
                             <i class="icon-tags"></i>
                             {% for category in post.categories.all %} 
@@ -52,11 +54,15 @@
                             
                         </li>
                     </ul>
-                    {% endif %}    
-
-                	{% autoescape off %}
-					{{ post.body|striptags|truncatewords:40 }}
-					{% endautoescape %}
+                    {% endif %} 
+                    </p>
+                    </div>   
+                
+                    <div>
+                    	{% autoescape off %}
+    					{{ post.body|striptags|truncatewords:40 }}
+    					{% endautoescape %}
+                    </div>
                 </div>    
             </div>
             <!--End Blog Post--> 
