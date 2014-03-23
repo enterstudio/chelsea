@@ -19,6 +19,8 @@ sitemaps = {
     'blog': GenericSitemap(blogsiteDict, priority=0.6),
 }
 
+handler404 = 'blog.views.show404'
+
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'blog.views.index', name='index'),
@@ -43,4 +45,5 @@ urlpatterns = patterns('',
     url(r'^ckeditor/', include('ckeditor.urls')),
     url(r'^sitemap\.xml$', cache_page(86400)(sitemap), {'sitemaps': sitemaps}),
     url(r'^robots\.txt$', include('robots.urls')),
+
 )

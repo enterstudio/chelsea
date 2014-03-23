@@ -11,7 +11,7 @@ logger = logging.getLogger('blog.logger')
 
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
-DEBUG = True if os.environ.get('BUILD')=='DEV' else False
+DEBUG = False #True if os.environ.get('BUILD')=='DEV' else False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (

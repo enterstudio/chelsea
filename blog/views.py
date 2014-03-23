@@ -11,6 +11,8 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger('blog.logger')
 
+def show404(request):
+    return render_to_response('404.html')
 
 def index(request):
     
