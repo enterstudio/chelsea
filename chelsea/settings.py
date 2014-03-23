@@ -8,7 +8,7 @@ import logging
 logger = logging.getLogger('blog.logger')
 
 
-DEBUG = True if os.environ.get('BUILD') else False
+DEBUG = True if os.environ.get('BUILD')=='DEV' else False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (

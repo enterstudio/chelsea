@@ -1,6 +1,7 @@
 # Create your views here.
 # from django.core.cache import cache
 from blog.models import Blog, Category
+from django.http import Http404
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
@@ -14,12 +15,10 @@ logger = logging.getLogger('blog.logger')
 def index(request):
     
     blog_posts = Blog.objects.filter(status='published').order_by('-display_date')
+
     paginator = Paginator(blog_posts, 10) # Show 10 posts per page
-
-    # for p in blog_posts:
-    #     logger.info(p.posted)
-
     page = request.GET.get('page')
+    
     try:
         posts = paginator.page(page)
     except PageNotAnInteger:
@@ -63,8 +62,11 @@ def view_post(request, slug, year, month,):
 
 def view_category(request, categorySlug):
     # Get specified category
-    posts = Blog.objects.filter(status='published').order_by('-display_date')
-    logging.info(posts)
+    try:
+        posts = Blog.objects.filter(status='published').order_by('-display_date')
+    except Blog.DoesNotExist:
+        raise Http404
+
     category_posts = []
     for post in posts:
         if post.categories.filter(slug=categorySlug):
@@ -74,7 +76,11 @@ def view_category(request, categorySlug):
     paginator = Paginator(category_posts, 10)
 
     # Get the category
-    category = Category.objects.filter(slug=categorySlug)[0]
+    try:
+        category = Category.objects.filter(slug=categorySlug)[0]
+    except:
+        raise Http404
+
 
     # Get the specified page
     page = request.GET.get('page')
