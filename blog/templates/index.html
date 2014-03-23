@@ -32,25 +32,18 @@
     	{% if posts %}
 	        
 	        {% for post in posts %}
-        	<!--Blog Post-->
-            <div class="row blog blog-medium margin-bottom-40">
-                <div class="col-md-5">
-                    {% if post.main_photo %}
-                    <a href="{{ post.get_absolute_url }}">
-                        {% thumbnail post.s3_main_image_url "720" as postImg %}
-                        <img class="img-responsive" src="{{ postImg.url }}" alt="{{post.main_photo_alt_text}}">
-                        {% endthumbnail %}
-                        {# <img class="img-responsive" src='{{post.s3_main_image_url}}' alt="{{post.main_photo_alt_text}}"></a>{{post.s3_main_image_url}} #}
-                    {% endif %}
-                </div>    
-                <div class="col-md-7">
-                	
-                    <h2><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
-                    <div class="clearfix">
-                    <p class="pull-left"><i class="icon-calendar"></i> {{post.display_date|date:"M d, Y"}}
-                    
+        	<h2>{{ post.title }}</h2>
+                <div class="blog-post-tags">
+                    <ul class="list-unstyled list-inline blog-info">
+                        <li><i class="icon-calendar"></i>{{post.display_date|date:"M d, Y"}}</li>
+                        {% comment %}
+                        <li><i class="icon-pencil"></i> Diana Anderson</li>
+                        <li><i class="icon-comments"></i> <a href="blog_item_option1.html#">24 Comments</a></li>
+                        {% endcomment %}
+                    </ul>
+
                     {% if post.categories|length > 0 %}
-                    <ul class="list-unstyled list-inline blog-tags pull-right">
+                    <ul class="list-unstyled list-inline blog-tags">
                         <li>
                             <i class="icon-tags"></i>
                             {% for category in post.categories.all %} 
@@ -59,18 +52,20 @@
                             
                         </li>
                     </ul>
-                    {% endif %} 
-                    </p>
-                    </div>   
+                    {% endif %}                                      
+                </div>
+
+                <div class="blog-img">
+                    {% if post.main_photo %}
+                    <img class="img-responsive" src="https://chchchelsea.s3.amazonaws.com/{{post.main_photo}}" alt="{{post.main_photo_alt_text}}">
+                    {% endif %}
+                </div>
                 
-                    <div>
-                    	{% autoescape off %}
-    					{{ post.body|striptags|truncatewords:40 }}
-    					{% endautoescape %}
-                    </div>
-                </div>    
-            </div>
-            <!--End Blog Post--> 
+                <br><br>
+
+                {% autoescape off %}
+                {{ post.body }}
+                {% endautoescape %} 
         	<hr class="margin-bottom-40">    
 	        {% endfor %}
 	        
