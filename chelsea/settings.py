@@ -1,8 +1,14 @@
 # Django settings for chelsea project.
 import os
+import urlparse
 import dj_database_url
+import logging
 
-DEBUG = True
+# Get an instance of a logger
+logger = logging.getLogger('blog.logger')
+
+
+DEBUG = True if os.environ.get('BUILD') else False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -139,7 +145,8 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'ckeditor',
     'storages',
-    'blog'
+    'blog',
+    'redis_cache'
 )
 
 # A sample logging configuration. The only tangible logging
@@ -220,3 +227,31 @@ AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 AWS_QUERYSTRING_AUTH = False
+
+
+# REDIS CACHE
+# if os.environ.get('BUILD')=='DEV':
+#     CACHES = {
+#         "default": {
+#             "BACKEND": "redis_cache.cache.RedisCache",
+#             'LOCATION': 'localhost:6379:0',
+#             "OPTIONS": {
+#                 "CLIENT_CLASS": "redis_cache.client.DefaultClient",
+#             }
+#         }
+#     }
+#     logger.info("LOCAL CACHE")
+# else:
+#     redis_url = urlparse.urlparse(os.environ.get('REDISCLOUD_URL'))
+
+#     CACHES = {
+#         "default": {
+#             "BACKEND": "redis_cache.cache.RedisCache",
+#             'LOCATION': '%s:%s:0' % (redis_url.hostname, redis_url.port),
+#             "OPTIONS": {
+#                 "PASSWORD":redis_url.password,
+#                 "CLIENT_CLASS": "redis_cache.client.DefaultClient",
+#             }
+#         }
+#     }
+#     logger.info("REDISCLOUD CACHE")

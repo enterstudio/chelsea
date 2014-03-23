@@ -1,5 +1,5 @@
 # Create your views here.
-
+# from django.core.cache import cache
 from blog.models import Blog, Category
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -10,7 +10,9 @@ import logging
 # Get an instance of a logger
 logger = logging.getLogger('blog.logger')
 
+
 def index(request):
+    
     blog_posts = Blog.objects.filter(status='published').order_by('-display_date')
     paginator = Paginator(blog_posts, 10) # Show 10 posts per page
 
@@ -89,12 +91,5 @@ def view_category(request, categorySlug):
     return render_to_response('view_category.html', {
         'posts': posts,
         'category': category,
-        'baseContainerClasses' : ['blog_page']
+        'baseContainerClasses' : ['blog_page','blog_category']
     })
-
-# def view_category(request, slug):
-#     category = get_object_or_404(Category, slug=slug)
-#     return render_to_response('view_category.html', {
-#         'category': category,
-#         'posts': Blog.objects.filter(category=category)[:5]
-#     })

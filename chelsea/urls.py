@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib.sitemaps import GenericSitemap
-
+from django.contrib.sitemaps.views import sitemap
+from django.views.decorators.cache import cache_page
 # feeds
 from blog.feeds import LatestEntriesFeed
 from blog.models import Blog
@@ -40,5 +41,5 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^ckeditor/', include('ckeditor.urls')),
-    url(r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps})
+    url(r'^sitemap\.xml$', cache_page(86400)(sitemap), {'sitemaps': sitemaps})
 )
