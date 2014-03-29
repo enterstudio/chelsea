@@ -278,8 +278,8 @@
                 <div class="headline headline-md"><h2>Follow us</h2></div>
                 <ul class="social-icons social-icons-color">
                     <li><a class="social_rss" data-original-title="Feed" href="/feeds/latest/"></a></li>
-                    <li><a class="social_facebook" data-original-title="Facebook" href="blog_medium.html#"></a></li>
-                    <li><a class="social_twitter" data-original-title="Twitter" href="blog_medium.html#"></a></li>
+                    <li><a class="social_facebook" data-original-title="Facebook" href="http://www.facebook.com/hichelseablog"></a></li>
+                    <li><a class="social_twitter" data-original-title="Twitter" href="http://www.twitter.com/hichelseablog"></a></li>
                     
                 </ul>
                 <div class="clearfix"></div>                
@@ -366,22 +366,34 @@
 <div class="footer">
     <div class="container">
         <div class="row">
-            <div class="col-md-3 md-margin-bottom-40">
+            <div class="col-md-4 md-margin-bottom-40">
                 <!-- About -->
                 <div class="headline"><h2>About</h2></div>  
                 {% get_blurb 'footer_about_us' %}
 
                 <!-- Monthly Newsletter -->
                 <div class="headline"><h2>Monthly Newsletter</h2></div> 
-                {% get_blurb 'footer_newsletter_intro' %}
-                <form class="footer-subsribe">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Email Address">                            
-                        <span class="input-group-btn">
-                            <button class="btn-u" type="button">Subscribe</button>
-                        </span>
-                    </div><!-- /input-group -->                    
-                </form>                         
+                
+                <!-- Begin MailChimp Signup Form -->
+                <link href="//cdn-images.mailchimp.com/embedcode/slim-081711.css" rel="stylesheet" type="text/css">
+                <style type="text/css">
+                    #mc_embed_signup{ clear:left; font:14px Helvetica,Arial,sans-serif;  width:420px;}
+                    #mc_embed_signup input.button {background-color:#72c02c;}
+                    #mc_embed_signup form { padding-left:0;}
+                    /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+                       We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+                </style>
+                <div id="mc_embed_signup">
+                <form action="http://hichelsea.us8.list-manage.com/subscribe/post?u=4ff955d5830a8d2185f551bd1&amp;id=6a6cf43bba" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                    <label for="mce-EMAIL">{% get_blurb 'footer_newsletter_intro' %}</label>
+                    <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                    <div style="position: absolute; left: -5000px;"><input type="text" name="b_4ff955d5830a8d2185f551bd1_6a6cf43bba" value=""></div>
+                    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                </form>
+                </div>
+
+                <!--End mc_embed_signup-->
             </div><!--/col-md-4-->  
             {% comment %}
             <div class="col-md-4 md-margin-bottom-40">
@@ -421,8 +433,8 @@
                 <div class="headline"><h2>Stay Connected</h2></div> 
                 <ul class="social-icons">
                     <li><a href="/feeds/latest" data-original-title="Feed" class="social_rss"></a></li>
-                    <li><a href="blog_medium.html#" data-original-title="Facebook" class="social_facebook"></a></li>
-                    <li><a href="blog_medium.html#" data-original-title="Twitter" class="social_twitter"></a></li>
+                    <li><a href="http://www.facebook.com/hichelseablog" data-original-title="Facebook" class="social_facebook"></a></li>
+                    <li><a href="http://www.twitter.com/hichelseablog" data-original-title="Twitter" class="social_twitter"></a></li>
                     
                 </ul>
             </div><!--/col-md-4-->
