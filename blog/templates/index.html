@@ -74,7 +74,7 @@
                     </div>
                     
                     <br><br>
-
+                    <div class="post_body">
                     {% autoescape off %}
                     {{ post.body|truncatewords_html:150 }}
                     {% if post.body|wordcount > 150 %}
@@ -82,7 +82,8 @@
                         read more <i class="glyphicon glyphicon-arrow-right"></i>
                     </a>{% endif %}
                     {% endautoescape %}
-                    <br><br>
+                    </div>
+                    
                     <div class="clearfix pull-left">
                         <i class="icon-comment"></i> <a href="{{post.get_absolute_url}}#comments">comment</a>
                         <br><br>
