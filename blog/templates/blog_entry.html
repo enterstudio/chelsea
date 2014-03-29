@@ -14,21 +14,18 @@
 {% endblock %}
 
 {% block styles%}
-<style>
-    .blog_page a {
-      color: #72c02c;
-    }
-</style>
+
 {% endblock %}
 {% block content %}
 <div class="row blog_post_display">
-    <div class="col-md-2 col-lg-2 visible-lg visible-md">
+    <div class="post_date_col col-md-2 col-lg-2 visible-lg visible-md">
             <p class="pull-right">{{post.display_date|date:"M d, Y"}}
             </p>
         
     </div>
 
     <div class="col-md-9 col-lg-9">
+
         <h2><a href="{{post.get_absolute_url}}">{{ post.title }}</a></h2>
         <div class="clearfix"> 
             <p class="pull-right hidden-lg hidden-md">{{post.display_date|date:"M d, Y"}}
@@ -58,10 +55,11 @@
         </div>
         
         <br><br>
-
+        <div class="post_body">
         {% autoescape off %}
         {{ post.body }}
         {% endautoescape %}
+        </div>
 
        <hr class="margin-bottom-40">
     </div>
