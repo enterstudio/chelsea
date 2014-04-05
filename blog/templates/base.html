@@ -216,26 +216,10 @@
                             <li><a href="page_contact3.html">Contacts Option 2</a></li>
                         </ul>
                     </li>                    
-                    <li class="hidden-sm"><a class="search"><i class="icon-search search-btn"></i></a></li>
+                   
 
                 </ul>
-                <div class="search-open">
-                    <div class="input-group googlesearch" style="box-sizing: content-box;">
-                                <script>
-                                  (function() {
-                                    var cx = '009385402654609038006:qg_2gz7zcna';
-                                    var gcse = document.createElement('script');
-                                    gcse.type = 'text/javascript';
-                                    gcse.async = true;
-                                    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-                                        '//www.google.com/cse/cse.js?cx=' + cx;
-                                    var s = document.getElementsByTagName('script')[0];
-                                    s.parentNode.insertBefore(gcse, s);
-                                  })();
-                                </script>
-                                <gcse:search></gcse:search>
-                    </div><!-- /input-group -->
-                </div>                
+                              
             </div><!-- /navbar-collapse -->
               
         </div>    
@@ -256,9 +240,35 @@
 		 <!-- Right Sidebar -->
     	
     	<div class="col-md-3">
+            <div>
+                <div class="input-group googlesearch" style="box-sizing: content-box;">
+                    <style>
+                    div.gsc-control-cse { padding-left:0;padding-right: 0;}
+                    div.gsc-search-button {width:40px; }
 
+                    </style>
+                   <script>
+                      (function() {
+                        var cx = '009385402654609038006:qg_2gz7zcna';
+                        var gcse = document.createElement('script');
+                        gcse.type = 'text/javascript';
+                        gcse.async = true;
+                        gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                            '//www.google.com/cse/cse.js?cx=' + cx;
+                        var s = document.getElementsByTagName('script')[0];
+                        s.parentNode.insertBefore(gcse, s);
+                      })();
+                    </script>
+                    <gcse:search></gcse:search>
+                </div><!-- /input-group -->
+            </div>             
+            <div class="bg-lite magazine-sb-social margin-bottom-30">
+                <div class="headline headline-md"><h2>About</h2></div>
+                {% get_blurb 'sidebar_about_us' %}
+                <div class="clearfix"></div>                
+            </div>
             <!-- Tabs Widget -->
-            <div class="tab-v2 margin-bottom-40">
+            <div class="hide tab-v2 margin-bottom-40">
                 <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="blog_medium.html#home-1">About Us</a></li>
                     <li><a data-toggle="tab" href="blog_medium.html#home-2">Quick Links</a></li>
@@ -294,24 +304,7 @@
 
             {% block recent_posts %}{% endblock %}
             
-            {% comment %}
-            <div class="headline headline-md"><h2>Search</h2></div>
-            <div>     
-                <script>
-                  (function() {
-                    var cx = '009385402654609038006:qg_2gz7zcna';
-                    var gcse = document.createElement('script');
-                    gcse.type = 'text/javascript';
-                    gcse.async = true;
-                    gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-                        '//www.google.com/cse/cse.js?cx=' + cx;
-                    var s = document.getElementsByTagName('script')[0];
-                    s.parentNode.insertBefore(gcse, s);
-                  })();
-                </script>
-                <gcse:search></gcse:search>
-            </div>
-            {% endcomment %}
+
 
 
         	<!-- Photo Stream -->
@@ -335,6 +328,12 @@
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
             </div>
             <!-- End Blog Latest Tweets -->
+
+            <div class="bg-lite magazine-sb-social margin-bottom-30">
+                <div class="headline headline-md"><h2>Quick Links</h2></div>
+                {% get_blurb 'sidebar_quicklinks' %}
+                <div class="clearfix"></div>                
+            </div>
         </div>
         
         <!-- End Right Sidebar -->
