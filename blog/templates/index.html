@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 
 {% load thumbnail %}
+{% load blog_extras %}
+
 {% block head_title %}{% if category %}{{category.title}} - {% endif %}Hi Chelsea{% endblock %}
     
 {% if category %}
@@ -76,7 +78,9 @@
                     <br><br>
                     <div class="post_body">
                     {% autoescape off %}
-                    {{ post.body|truncatewords_html:150 }}
+                    
+                    {{ post.body|pagebreaker }}
+                    {%comment%}{{ post.body|truncatewords_html:150 }}{%endcomment%}
                     {% if post.body|wordcount > 150 %}
                     <a href="{{post.get_absolute_url}}" class='btn-u'>
                         read more <i class="glyphicon glyphicon-arrow-right"></i>
@@ -84,10 +88,11 @@
                     {% endautoescape %}
                     <br><br>
                     </div>
-
+                    
+                    <div class="clearfix"><p>&nbsp;</p></div>
                     <div class="clearfix pull-left">
                         <i class="icon-comment"></i> <a href="{{post.get_absolute_url}}">comment</a>
-                        <br><br>
+                        
                     </div>
 
                     

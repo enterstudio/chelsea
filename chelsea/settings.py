@@ -11,7 +11,7 @@ logger = logging.getLogger('blog.logger')
 
 PROJECT_PATH = os.path.dirname(os.path.abspath(__file__))
 
-DEBUG = False #True if os.environ.get('BUILD')=='DEV' else False
+DEBUG = True if os.environ.get('BUILD')=='DEV' else False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -67,7 +67,7 @@ CKEDITOR_CONFIGS = {
        'skin': 'moono',
         'toolbar': [
             ['Styles', 'Format', 'Bold', 'Italic', 'Underline', 'Strike', 'RemoveFormat', 'SpellChecker', 'Undo', 'Redo'],
-            ['Link', 'Image', 'Table', 'HorizontalRule'],
+            ['Link', 'Image', 'Table', 'HorizontalRule','PageBreak'],
             ['spellchecker','TextColor', 'BGColor'],
             ['Smiley', 'SpecialChar'], ['Source'],
         ],
